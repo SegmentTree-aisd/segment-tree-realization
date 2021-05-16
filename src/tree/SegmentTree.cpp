@@ -37,19 +37,21 @@ int rsq(vector<long long> &tree, int v, int tl, int tr, int ql, int qr) {
 // но я пока не тестила
 // return rsq(tree, 2 * v + 1, tl, tmid, ql, min(qr, tmid)) + rsq(tree, 2*v + 2, tmid, tr, max(ql, tmid), qr);
 
-
 // запрос модификации
-// пока не проверила
-void update (vector<int> &tree, int v, int tl, int tr, int pos, int new_val) {
+// принимается массив-дерево, текущая вершина  v, границы текущего отрезка tl и tr, позиция изменяемого элемента pos, новое значение new_val
+void update(vector<long long> &tree, int v, int tl, int tr, int pos, int new_val) {
 
-    if (tl == tr)
+    if(pos < tl || pos > tr)    // если позиция изменяемого элемента выходит за пределы рассматриваемого отрезка
+        return ;
+
+    if (tl + 1 == tr)           // меняем значение листа, если нашли тот самый нужный отрезок, точнее полуинтервал [tl; tr)
         tree[v] = new_val;
     else {
         int tm = (tl + tr) / 2;
-        if (pos <= tm)
+        if (pos <= tm)                                               // если индекс изменяемого значения <= середины tm текущего отрезка, идём искать элемент и изменять значения в левое поддерево
             update (tree, v * 2 + 1, tl, tm, pos, new_val);
-        else
+        else                                                        // если же индекс изменяемого значения > tm => идём в правое поддерево
             update (tree, v * 2 + 2, tm, tr, pos, new_val);
-        tree[v] = tree[v * 2 + 1] + tree[v * 2 + 2];
+        tree[v] = tree[v * 2 + 1] + tree[v * 2 + 2];                // пересчитываем после обновления все значения
     }
 }

@@ -6,15 +6,6 @@
 using namespace std;
 const int rangeOfNumbers = 1000;
 
-void reverse_array(std::vector<long long> &array) {
-    for(int i = 0; i < array.size() / 2; i++) {
-        int temp = array[i];
-        array[i] = array[array.size() - i - 1];
-        array[array.size() - i - 1] = temp;
-    }
-
-}
-
 void print_array(std::vector<long long> &arr) {
     for (int i = 0; i < arr.size(); i++) {
         cout << arr[i] << " ";

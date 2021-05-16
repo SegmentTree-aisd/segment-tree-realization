@@ -14,12 +14,22 @@ int main() {
     vector<long long> tree(size * 4);
     print_array(arr);
 
-    build(tree, arr, 0, 0, tree.size());
+    build(tree, arr, 0, 0, size);
+    cout << "----tree is built" << endl;
 
     // запрос суммы на отрезке  [5, 7] = 5 + 6 + 7 = 18
-    int left = 0;
-    int right = 13;
-    cout  << rsq(tree, 0, 0, tree.size(), left, right + 1);
+    int left = 5;
+    int right = 7;
+    cout  <<  "sum  on [" << left << ", " << right << "] = " << rsq(tree, 0, 0, size, left, right + 1) << endl;
+
+    cout << "----sum is counted" << endl;
+
+    // обновление 7 элемента массива на значение 10 (было 6, станет 10)
+    update(tree, 0, 0, size, 7, 10);
+    cout << "tree is updated" << endl;
+
+    // запрос суммы на обновлённом отрезке  [5, 7] = 5 + 10 + 7 = 22
+    cout << "----sum  on [" << left << ", " << right << "] = " << rsq(tree, 0, 0, size, left, right + 1);
 
     return 0;
 }
