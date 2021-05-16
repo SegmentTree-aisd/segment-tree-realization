@@ -1,6 +1,8 @@
 cmake-build-debug/
 .idea
 
+venv/
+
 # всякая фигня предлагаемая гитхабом
 # Prerequisites
 *.d
