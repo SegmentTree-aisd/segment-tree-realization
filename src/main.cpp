@@ -30,7 +30,11 @@ int main() {
 
     // запрос суммы на обновлённом отрезке  [5, 7] = 5 + 10 + 7 = 22
     cout << "----sum  on [" << left << ", " << right << "] = " << rsq(tree, 0, 0, size, left, right + 1);
-
+    
+    // максимум на отрезке + его индекс (индекс по условию любого из максимумов)
+    build_max(tree, arr, 0, 0, size);
+    pair<long long, int> ans =  getmax(tree, 0, 0, size, left, right + 1);
+    cout<<"max item: "<<ans.first<<", item's index: "<<ans.second;
     return 0;
 }
 
