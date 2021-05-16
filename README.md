@@ -1,6 +1,6 @@
 # segment-tree-realization
 
-Team:
+Team:  
   Генатулин Ильнас  
   Савинчева Ангелина  
   Тяпкина Регина  
