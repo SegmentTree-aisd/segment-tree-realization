@@ -29,7 +29,7 @@ int main() {
     cout << "tree is updated" << endl;
 
     // запрос суммы на обновлённом отрезке  [5, 7] = 5 + 10 + 7 = 22
-    cout << "----sum  on [" << left << ", " << right << "] = " << rsq(tree, 0, 0, size, left, right + 1);
+    cout << "----sum  on [" << left << ", " << right << "] = " << rsq(tree, 0, 0, size, left, right + 1) << endl;
 
     return 0;
 }
