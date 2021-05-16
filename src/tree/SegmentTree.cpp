@@ -55,3 +55,31 @@ void update(vector<long long> &tree, int v, int tl, int tr, int pos, int new_val
         tree[v] = tree[v * 2 + 1] + tree[v * 2 + 2];                // пересчитываем после обновления все значения
     }
 }
+
+void build_max(std::vector<pair<long long, int>> &tree,std::vector<long long> &arr, int v, int tl, int tr) {
+    if (tr - tl == 1) {
+        tree[v] = make_pair(arr[tl], tl);
+        return;
+    }
+    int m = (tl + tr) / 2;
+    build_max(tree, arr, 2*v + 1, tl, m);
+    build_max(tree, arr, 2*v + 2, m, tr);
+    tree[v] = max(tree[2*v + 1], tree[2*v + 2]);
+}
+
+// принимает текущую вершину, ..., левая и правая границы отрезка
+pair<long long, int> getmax(std::vector<pair<long long, int>> &tree, int v, int tl, int tr, int ql, int qr) {
+    // ситуация, когда отрезок совпадает с текущей вершиной ("==" оба знака )
+    /* дальше знаки поменяли на <= и >= , в видео есть описание зачем (3-я ссылка литературы)
+    */
+    if (ql <= tl && qr >= tr) {
+        return tree[v];
+    }
+    if (ql >= tr || qr <= tl) {
+        return make_pair(-1e9, -1); // возвращаем "ничего"
+    }
+    int m = (tl + tr) / 2; // снова середина
+    pair<long long, int> mtl = getmax(tree, 2*v + 1, tl, m, ql, qr); // для левой половины
+    pair<long long, int> mtr = getmax(tree, 2*v + 2, m, tr, ql, qr); // для правой
+    return max(mtl, mtr);
+}
