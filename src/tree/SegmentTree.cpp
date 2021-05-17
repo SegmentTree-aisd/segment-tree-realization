@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include "SegmentTree.h"
 
@@ -21,8 +20,8 @@ void build(vector<long long> &tree, const vector<long long> &arr, int v, int tl,
 
 // запрос суммы, принимается массив-дерево tree, текущая вершина v, левая и правая границы отрезка tl и tr, за который отвечает текущая вершина дерева, левая и правая границы запроса ql и qr
 // из основной программы вызывать нужно rsq(tree, 0, 0, tree.size(), left, right) с учетом того, что в дереве для индексации используются полуинтервалы [left,  right)
-int rsq(vector<long long> &tree, int v, int tl, int tr, int ql, int qr) {
-    if (tl >= qr || tr <= ql)               // если наш отрезок, содержащийся в вершине v, не входит в запрос, вернуть 0.  T.е. это ситуации, когда отрезки расположены: [ql, qr] [tl, tr] или [tl, tr] [ql, qr]
+long long rsq(vector<long long> &tree, int v, int tl, int tr, int ql, int qr) {
+    if (tl >= qr || tr <= ql || tl > tr)               // если наш отрезок, содержащийся в вершине v, не входит в запрос, вернуть 0.  T.е. это ситуации, когда отрезки расположены: [ql, qr] [tl, tr] или [tl, tr] [ql, qr]
         return 0;
 
     if (tl >= ql && tr <= qr)              // если текущий отрезок, содержащийся в вершине v, полностью входит в запрос, вернуть значение на этом отрезке tree[v].  T.е. это ситуации, когда отрезки расположены: [ql, [tl, tr] qr]  [tl=ql, tr=qr]
@@ -68,7 +67,7 @@ void build_max(std::vector<pair<long long, int>> &tree,std::vector<long long> &a
 }
 
 // принимает текущую вершину, ..., левая и правая границы отрезка
-pair<long long, int> getmax(std::vector<pair<long long, int>> &tree, int v, int tl, int tr, int ql, int qr) {
+pair<long long, int> get_max(std::vector<pair<long long, int>> &tree, int v, int tl, int tr, int ql, int qr) {
     // ситуация, когда отрезок совпадает с текущей вершиной ("==" оба знака )
     /* дальше знаки поменяли на <= и >= , в видео есть описание зачем (3-я ссылка литературы)
     */
@@ -79,7 +78,7 @@ pair<long long, int> getmax(std::vector<pair<long long, int>> &tree, int v, int 
         return make_pair(-1e9, -1); // возвращаем "ничего"
     }
     int m = (tl + tr) / 2; // снова середина
-    pair<long long, int> mtl = getmax(tree, 2*v + 1, tl, m, ql, qr); // для левой половины
-    pair<long long, int> mtr = getmax(tree, 2*v + 2, m, tr, ql, qr); // для правой
+    pair<long long, int> mtl = get_max(tree, 2 * v + 1, tl, m, ql, qr); // для левой половины
+    pair<long long, int> mtr = get_max(tree, 2 * v + 2, m, tr, ql, qr); // для правой
     return max(mtl, mtr);
 }
