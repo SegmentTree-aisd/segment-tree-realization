@@ -42,13 +42,21 @@ int main() {
             buildDataFile << duration.count() << endl;
             cout << "       builded tree by time: " << duration.count() << endl;
 
+
 //            int left = generate_random_int_number(0, size);
-//            int right = left + 51;
+//            int right = left + 100;
+//
+//
+//            if (size == 100) {
+//                left = 0;
+//                right = 98;
+//            }
 //
 //            while (right >= size) {
 //                left = generate_random_int_number(0, size);
-//                right = left + 51;
+//                right = left + 100;
 //            }
+
 
             int right = generate_random_int_number(0, size);
             int left = generate_random_number(0, size);
@@ -58,17 +66,17 @@ int main() {
             }
 
             auto start1 = std::chrono::high_resolution_clock::now();
-            long long sum = rsq(tree, 0, 0, size, left, right + 1);          ///rsq
+            long long sum =  rsq(tree, 0, 0, size, left, right + 1);
             auto stop1 = std::chrono::high_resolution_clock::now();
             auto duration1 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop1 - start1);
 
             rsqDataFile << duration1.count() << endl;
             cout << "       sum on [" << left << ", " << right << "] = " << sum << ", time:" << duration1.count() << endl;
 
-//            int random_position = generate_random_int_number(0, size);
-            int random_position = 10;
-//            long long random_value = generate_random_number(-100,1000);
-            long long random_value = 0;
+            int random_position = generate_random_int_number(0, size);
+            long long random_value = generate_random_number(upper,lower);
+//            int random_position = 10;
+//            long long random_value = 0;
 
             auto start2 = std::chrono::high_resolution_clock::now();
             update(tree, 0, 0, size, random_position, random_value);  ///update
@@ -84,7 +92,7 @@ int main() {
             auto stop3 = std::chrono::high_resolution_clock::now();
             auto duration3 = std::chrono::duration_cast<std::chrono::nanoseconds>(stop3 - start3);
 
-            //rsqDataFile << duration3.count() << endl;
+            rsqDataFile << duration3.count() << endl;
             cout << "       sum after update on [" << left << ", " << right << "] = " << sum3 << ", time:" << duration3.count() << endl;
 
             counter--;
