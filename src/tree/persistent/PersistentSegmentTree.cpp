@@ -56,7 +56,7 @@ void upgrade(segTreeNode* prev, segTreeNode* cur, int tl, int tr, int idx, int v
     }
 
     int tmid = (tl + tr) / 2;
-    if (idx <= tmid) {
+    if (idx < tmid) {
         cur->right = prev->right;                                      // создание ссылки на правого потомка из предыдущей версии
         cur->left = new segTreeNode(nullptr, nullptr, 0);     // создание новой вершины segTreeNode в текущей версии
 
