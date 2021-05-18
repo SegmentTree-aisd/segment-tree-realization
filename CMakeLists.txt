@@ -7,8 +7,9 @@ include_directories(src/tree)
 include_directories(src/utils)
 
 add_executable(segment_tree_realization
+        src/u-tests/main.py
         src/tree/SegmentTree.cpp
         src/tree/SegmentTree.h
         src/utils/ArraysFunctions.cpp
         src/utils/ArraysFunctions.h
-        src/main.cpp src/tree/persistent/PersistentSegmentTree.cpp)
+        src/main.cpp src/tree/persistent/PersistentSegmentTree.cpp src/u-tests/tests.cpp)

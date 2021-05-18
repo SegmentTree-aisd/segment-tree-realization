@@ -107,7 +107,7 @@ long rsq(int k, int tl, int tr, int ql, int qr) {
     return rsq(node, tl, tr, ql, qr);
 }
 
-
+//
 int main(int argc, char const *argv[]) {
     vector<long> arr= {1,2,3,4,5};
     int n = arr.size();

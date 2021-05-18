@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats as st
 
-file = open('build.txt', 'r')
+file = open('update.txt', 'r')
 
 number_of_elements = [100, 5000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000,
-                      150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 550000, 600000, 650000, 700000]
+                      150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 550000, 600000, 650000, 700000, 750000, 800000, 850000, 900000]
 seconds = []
 data = []
 yerrormin = []
@@ -14,7 +14,7 @@ yerrormax = []
 for line in file:
     line = line.replace("\n", "")
     if line != "---":
-        data.append(float(line) / 1000.0)
+        data.append(float(line))
     else:
         print(len(data))
         sum = 0
@@ -32,17 +32,17 @@ for line in file:
         sum = 0
 
 
-plt.xkcd()
+# plt.xkcd()
 
-fig = plt.figure(figsize=(15, 10))
+fig = plt.figure(figsize=(30, 25))
 ax1 = fig.add_subplot(111)
 
 ax1.plot(number_of_elements, seconds, label="data")
 ax1.scatter(number_of_elements, seconds)
 
 ax1.set_xlabel("N, number of elements")
-ax1.set_ylabel("T, microseconds")
-ax1.set_title("Building SEGMENT TREE")
+ax1.set_ylabel("T, nanoseconds")
+ax1.set_title("UPDATE - SEGMENT TREE")
 
 yerror = [yerrormin, yerrormax]
 # ax1.errorbar(number_of_elements, seconds, yerr=yerror, fmt=' ', capsize=3)
@@ -53,8 +53,8 @@ ax1.scatter(number_of_elements, yerrormin, s=100, c='red', marker='_',  linewidt
 ax1.legend()
 ax1.minorticks_on()
 plt.grid(which="major", color='b', linestyle='-', linewidth=0.15)
-plt.grid(which="minor", color='b', linestyle='--', linewidth=0.10)
+plt.grid(which="minor", color='g', linestyle='--', linewidth=0.10)
 
-plt.savefig("build-segment-tree-plot.png")
+plt.savefig("update-segment-tree-plot.png")
 
 plt.show()
