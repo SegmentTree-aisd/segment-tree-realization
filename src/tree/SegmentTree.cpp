@@ -38,7 +38,7 @@ long long rsq(vector<long long> &tree, int v, int tl, int tr, int ql, int qr) {
 
 // запрос модификации
 // принимается массив-дерево, текущая вершина  v, границы текущего отрезка tl и tr, позиция изменяемого элемента pos, новое значение new_val
-void update(vector<long long> &tree, int v, int tl, int tr, int pos, int new_val) {
+void update(vector<long long> &tree, int v, int tl, int tr, int pos, long long new_val) {
 
     if(pos < tl || pos > tr)    // если позиция изменяемого элемента выходит за пределы рассматриваемого отрезка
         return ;
@@ -47,7 +47,7 @@ void update(vector<long long> &tree, int v, int tl, int tr, int pos, int new_val
         tree[v] = new_val;
     else {
         int tm = (tl + tr) / 2;
-        if (pos <= tm)                                               // если индекс изменяемого значения <= середины tm текущего отрезка, идём искать элемент и изменять значения в левое поддерево
+        if (pos < tm)                                               // если индекс изменяемого значения <= середины tm текущего отрезка, идём искать элемент и изменять значения в левое поддерево
             update (tree, v * 2 + 1, tl, tm, pos, new_val);
         else                                                        // если же индекс изменяемого значения > tm => идём в правое поддерево
             update (tree, v * 2 + 2, tm, tr, pos, new_val);

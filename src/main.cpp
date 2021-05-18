@@ -10,8 +10,8 @@ using namespace std;
 int main() {
     int size = 14;
 
-    // vector<long long> arr = generate_array_with_random_numbers(size);
-    vector<long long> arr = {0, 1, 2, 3, 4, 5, 6, 22 ,8 , 9, 10, 11, 12, 13};
+//    vector<long long> arr = generate_array_with_random_numbers(size);
+    vector<long long> arr = {0, 1, 2, 3, 4, 5, 6, 7 ,8 , 9, 10, 11, 12, 13};
     vector<long long> tree(size * 4);
     print_array(arr);
 
@@ -22,11 +22,12 @@ int main() {
     int right = 7;
     cout  <<  "sum  on [" << left << ", " << right << "] = " << rsq(tree, 0, 0, size, left, right + 1) << endl;
 
-    // обновление 7 элемента массива на значение 10 (было 6, станет 10)
-    update(tree, 0, 0, size, 7, 10);
+    // обновление 7 элемента массива на значение 0 (было 7, станет 0)
+    update(tree, 0, 0, size, 7, 0);
 
     // запрос суммы на обновлённом отрезке  [5, 7] = 5 + 10 + 7 = 22
     cout << "sum  on [" << left << ", " << right << "] = " << rsq(tree, 0, 0, size, left, right + 1) << endl;
+
 
 
     // дерево отрезков для задачи поиска максимума на отрезке + его индекса (индекс по условию любого из максимумов)
