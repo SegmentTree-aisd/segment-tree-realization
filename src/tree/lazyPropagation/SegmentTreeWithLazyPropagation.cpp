@@ -36,7 +36,7 @@ int getAddOnRange (vector<long long> &tree, int v, int tl, int tr, int pos) {
         return tree[v];
     }
     int tm = (tl + tr) / 2;
-    if (pos <= tm) {
+    if (pos < tm) {
         return tree[v] + getAddOnRange(tree, 2*v + 1, tl, tm, pos);
     }
     else {
@@ -89,7 +89,7 @@ int getAssignOnRange (vector<long long> &tree, int v, int tl, int tr, int pos) {
     }
     push(tree, v); // проталкиваем метку до листьев, если она есть
     int tm = (tl + tr) / 2;
-    if (pos <= tm) {
+    if (pos < tm) {
         return getAssignOnRange(tree, 2*v + 1, tl, tm, pos);
     }
     else {
