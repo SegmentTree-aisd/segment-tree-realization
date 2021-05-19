@@ -15,6 +15,6 @@ add_executable(segment_tree_realization
         src/main.cpp
         src/tree/persistent/PersistentSegmentTree.cpp
         src/u-tests/tests.cpp
-        src/tree/lazyPropagation/SegmentTreeWithLazyPropagation.cpp,
+        src/tree/lazyPropagation/SegmentTreeWithLazyPropagation.cpp
         src/tree/lazyPropagation/SegmentTreeWithLazyPropagation.h
         )
