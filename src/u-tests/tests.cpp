@@ -5,7 +5,7 @@
 #include <fstream>
 
 #include "../utils/ArraysFunctions.h"
-#include "../tree/SegmentTree.h"
+#include "base/SegmentTree.h"
 
 using namespace std;
 const long long upper = 1000000000;
@@ -17,11 +17,11 @@ int main() {
 //    vector<int> sizes = {1000000};
 
     ofstream buildDataFile;
-    buildDataFile.open ("/home/regina/Repositories/Algorythmes and data structure/Семестровки АиСД/segment tree/segment-tree-realization/src/u-tests/build.txt");
+    buildDataFile.open ("build.txt");
     ofstream rsqDataFile;
-    rsqDataFile.open ("/home/regina/Repositories/Algorythmes and data structure/Семестровки АиСД/segment tree/segment-tree-realization/src/u-tests/rsq-random-ranges.txt");
+    rsqDataFile.open ("rsq-random-ranges.txt");
     ofstream updateDataFile;
-    updateDataFile.open ("/home/regina/Repositories/Algorythmes and data structure/Семестровки АиСД/segment tree/segment-tree-realization/src/u-tests/update.txt");
+    updateDataFile.open ("update.txt");
 
     for (int size : sizes) {
         cout << "SIZE = " << size << endl;

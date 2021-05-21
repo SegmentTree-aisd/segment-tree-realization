@@ -31,7 +31,7 @@ void updateAddOnRange(vector<long long> &tree, int v, int tl, int tr, int l, int
 }
 
 // запрос элемента в случае, когда обновление - прибавление на отрезке
-int getAddOnRange (vector<long long> &tree, int v, int tl, int tr, int pos) {
+long long getAddOnRange (vector<long long> &tree, int v, int tl, int tr, int pos) {
     if (tl == tr) {
         return tree[v];
     }
@@ -83,7 +83,7 @@ void updateAssignOnRange (vector<long long> &tree, int v, int tl, int tr, int l,
 }
 
 // операция получения в случае, когда обновление - присвоение всему отрезку некоторого значения
-int getAssignOnRange (vector<long long> &tree, int v, int tl, int tr, int pos) {
+long long getAssignOnRange (vector<long long> &tree, int v, int tl, int tr, int pos) {
     if (tr - tl == 1) {
         return tree[v];
     }

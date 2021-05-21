@@ -3,7 +3,7 @@
 #include <algorithm>
 
 #include "utils/ArraysFunctions.h"
-#include "tree/SegmentTree.h"
+#include "base/SegmentTree.h"
 
 using namespace std;
 
